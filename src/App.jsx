@@ -1,11 +1,10 @@
-import { Button } from '@heroui/react'
 import Background from './components/Background'
-import Navbar from './components/Navbar'
+import LandingPage from './pages/LandingPage'
 
 const App = () => {
   return (
     <Background>
-      <Navbar />
+      <LandingPage />
     </Background>
   )
 }
