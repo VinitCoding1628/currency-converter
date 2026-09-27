@@ -1,6 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @import "tailwindcss";
 @import "@heroui/styles"; 
 *{
-  margin: 0px;
   box-sizing: border-box;
+}
+
+@theme {
+  --primary-color: #5F8DF7;
+  --secondary-color: #3DA3D6;
+  --tertiary-color: #A78BFA;
+}
+
+body {
+  background-color: #faf8f2;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.aura-bg {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.aura-content {
+  position: relative;
+  z-index: 1;
+}
+
+.aura-layer-1,
+.aura-layer-2,
+.aura-layer-3,
+.aura-layer-4 {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(0);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.aura-layer-1 {
+  mix-blend-mode: normal;
+  filter: blur(200px);
+}
+
+.aura-layer-2 {
+  mix-blend-mode: normal;
+  filter: blur(175px);
+}
+
+.aura-layer-3 {
+  mix-blend-mode: multiply;
+  filter: blur(200px);
+}
+
+.aura-layer-4 {
+  mix-blend-mode: multiply;
+  filter: blur(150px);
+}
+
+@media (min-width: 768px) {
+  .aura-layer-1,
+  .aura-layer-3 {
+    filter: blur(260px);
+  }
+
+  .aura-layer-2 {
+    filter: blur(252px);
+  }
+
+  .aura-layer-4 {
+    filter: blur(216px);
+  }
 }

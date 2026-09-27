@@ -1,11 +1,12 @@
 import { Button } from '@heroui/react'
-import React from 'react'
+import Background from './components/Background'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
-    <div>
-      <Button>Click me</Button>
-    </div>
+    <Background>
+      <Navbar />
+    </Background>
   )
 }
 
