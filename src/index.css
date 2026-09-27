@@ -6,9 +6,9 @@
 }
 
 @theme {
-  --primary-color: #5F8DF7;
-  --secondary-color: #3DA3D6;
-  --tertiary-color: #A78BFA;
+  --color-primary-color: #5F8DF7;
+  --color-secondary-color: #3DA3D6;
+  --color-tertiary-color: #A78BFA;
 }
 
 body {
@@ -18,8 +18,14 @@ body {
 
 .aura-bg {
   position: relative;
-  overflow: hidden;
   min-height: 100vh;
+}
+
+.aura-layers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .aura-content {
@@ -71,4 +77,12 @@ body {
   .aura-layer-4 {
     filter: blur(216px);
   }
+}
+
+.feature-bg{
+  background-image: url('assets/images/feature_bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
 }

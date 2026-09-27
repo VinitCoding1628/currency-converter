@@ -24,15 +24,16 @@ const Background = ({ children }) => {
       ];
       
   return (
-    <div className="aura-bg">
-      {layers.map((layer) => (
-        <div
-          key={layer.className}
-          className={layer.className}
-          style={{ background: layer.background }}
-          aria-hidden="true"
-        />
-      ))}
+    <div className="aura-bg px-8">
+      <div className="aura-layers" aria-hidden="true">
+        {layers.map((layer) => (
+          <div
+            key={layer.className}
+            className={layer.className}
+            style={{ background: layer.background }}
+          />
+        ))}
+      </div>
       <div className="aura-content">{children}</div>
     </div>
   );
