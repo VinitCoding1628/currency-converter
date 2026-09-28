@@ -6,8 +6,10 @@ import { RiArrowRightLongFill } from "react-icons/ri";
 import { GiElectric } from "react-icons/gi";
 import { FiGlobe } from "react-icons/fi";
 import { ImStatsBars } from "react-icons/im";
+import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: GiElectric,
@@ -62,40 +64,43 @@ const LandingPage = () => {
       numberBgColor: '#FBF3D0',
     },
   ]
-  return (
-    <div className=''>
-      <Navbar />
 
+  const navigateToConverter = () => {
+    navigate('/converter')
+  }
+
+  return (
+    <div className='px-4'>
       {/* Hero Section */}
-      <section className='mt-15 flex justify-between items-center'>
-        <div className='w-1/2 flex flex-col gap-4 mt-12'>
+      <section className='mt-15 mb-15 flex flex-col items-center justify-center lg:flex-row lg:justify-between'>
+        <div className='lmt-12 flex w-full flex-col items-center gap-4 text-center lg:w-1/2 lg:items-start lg:text-left'>
           <h1 className='text-6xl font-extrabold leading-18'>Instant Global <span className='bg-linear-to-r from-primary-color to-secondary-color bg-clip-text text-transparent'>Currency Exchange</span></h1>
-          <p className='text-xl text-gray-500 leading-8 w-170'>Get accurate and up-to-date exchange rates, convert currencies instantly, and track historical trends — all in one simple, powerful experience powered by <b>Xchangeo.</b></p>
-          <Button className='bg-linear-to-r from-primary-color to-secondary-color p-6 text-white font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out mt-4'>
-            Try Converter <RiArrowRightLongFill className='text-2xl' />
+          <p className='text-xl text-gray-500 leading-8 md:w-full sm:w-full w-full'>Get accurate and up-to-date exchange rates, convert currencies instantly, <br className='lg:block hidden'/> and track historical trends — all in one simple, powerful experience <br className='lg:block hidden'/> powered by <b>Xchangeo.</b></p>
+          <Button onClick={navigateToConverter} className='lg:text-base flex items-center justify-center text-base bg-linear-to-r from-primary-color to-secondary-color p-6 text-white font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out mt-4'>
+            Try Converter <RiArrowRightLongFill className='text-4xl' />
           </Button>
         </div>
-        <img src={heroImage} alt="hero-img" className='w-1/3 pe-22' />
+        <img src={heroImage} alt="hero-img" className='lg:w-150 md:w-130 sm:w-100 w-full lg:pe-22 lg:pt-0 md:pt-10 sm:pt-10 pt-10' />
       </section>
 
       {/* Features section */}
-      <section className='py-12 feature-bg border border-gray-200 rounded-4xl my-10'>
+      <section className='my-10 rounded-4xl border border-gray-200 feature-bg px-4 py-12 sm:px-6 lg:px-8'>
         <div>
           <div className='flex items-center justify-center gap-2'>
-            <hr className='w-10 border rounded border-gray-400' />
-            <h2 className='text-xl text-slate-600 font-bold'>Features</h2>
-            <hr className='w-10 border rounded border-gray-400' />
+            <hr className='w-10 rounded border border-gray-400' />
+            <h2 className='text-xl font-bold text-slate-600'>Features</h2>
+            <hr className='w-10 rounded border border-gray-400' />
           </div>
-          <div className='flex justify-evenly items-center mt-10'>
+          <div className='mt-10 flex flex-col items-stretch gap-6 md:flex-row md:flex-wrap md:justify-center lg:flex lg:justify-evenly'>
             {
               features.map((feature, index) => {
                 const Icon = feature.icon;
 
                 return (
-                  <div key={index} className='flex flex-col items-start justify-start gap-2 bg-white rounded-xl shadow-md p-6 w-110'>
-                    <Icon className={`${feature.iconColor} p-4 text-6xl rounded-lg`} style={{ backgroundColor: feature.iconBgColor }} />
+                  <div key={index} className='flex w-full flex-col items-start justify-start gap-2 rounded-xl bg-white p-6 shadow-md md:w-[calc(50%-0.75rem)] lg:w-auto lg:max-w-sm lg:flex-1'>
+                    <Icon className={`${feature.iconColor} rounded-lg p-4 text-6xl`} style={{ backgroundColor: feature.iconBgColor }} />
                     <h3 className='text-lg font-bold'>{feature.title}</h3>
-                    <p className='text-gray-500 text-sm'>{feature.description}</p>
+                    <p className='text-sm text-gray-500'>{feature.description}</p>
                   </div>
                 )
               })
@@ -105,16 +110,16 @@ const LandingPage = () => {
       </section>
 
       {/* How it works section */}
-      <section className='my-16 pb-10'>
-      <div className='flex items-center justify-center gap-2'>
-            <hr className='w-10 border rounded border-gray-400' />
-            <h2 className='text-xl text-slate-600 font-bold'>How it works</h2>
-            <hr className='w-10 border rounded border-gray-400' />
-          </div>
-        <div className='flex items-center gap-3 my-10'>
+      <section className='py-16 sm:py-24'>
+        <div className='flex items-center justify-center gap-2'>
+          <hr className='w-10 rounded border border-gray-400' />
+          <h2 className='text-center text-xl font-bold text-slate-600'>How it works</h2>
+          <hr className='w-10 rounded border border-gray-400' />
+        </div>
+        <div className='my-10 flex flex-col items-stretch gap-3 lg:flex-row lg:items-center'>
           {steps.map((step, index) => (
             <React.Fragment key={step.number}>
-              <div className='flex flex-1 items-center gap-4 bg-white rounded-2xl border border-gray-100 shadow-sm p-4'>
+              <div className='flex w-full items-center gap-4 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm lg:flex-1'>
                 <span
                   className={`${step.numberColor} flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-xl font-bold`}
                   style={{ backgroundColor: step.numberBgColor }}
@@ -123,11 +128,11 @@ const LandingPage = () => {
                 </span>
                 <div>
                   <h3 className='font-bold'>{step.title}</h3>
-                  <p className='text-sm text-gray-500 mt-1'>{step.description}</p>
+                  <p className='mt-1 text-sm text-gray-500'>{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (
-                <RiArrowRightLongFill className='shrink-0 text-xl text-gray-400' aria-hidden='true' />
+                <RiArrowRightLongFill className='shrink-0 rotate-90 self-center text-xl text-gray-400 lg:rotate-0' aria-hidden='true' />
               )}
             </React.Fragment>
           ))}
