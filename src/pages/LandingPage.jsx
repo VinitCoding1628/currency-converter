@@ -1,12 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import heroImage from '../assets/images/hero_img.svg'
-import { Button } from '@heroui/react';
+import heroImage from '../assets/images/hero_img.svg';
 import { RiArrowRightLongFill } from "react-icons/ri";
 import { GiElectric } from "react-icons/gi";
 import { FiGlobe } from "react-icons/fi";
 import { ImStatsBars } from "react-icons/im";
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -70,14 +69,14 @@ const LandingPage = () => {
   }
 
   return (
-    <div className='px-4'>
+    <div className='px-7'>
       {/* Hero Section */}
       <section className='mt-15 mb-15 flex flex-col items-center justify-center lg:flex-row lg:justify-between'>
         <div className='lmt-12 flex w-full flex-col items-center gap-4 text-center lg:w-1/2 lg:items-start lg:text-left'>
           <h1 className='text-6xl font-extrabold leading-18'>Instant Global <span className='bg-linear-to-r from-primary-color to-secondary-color bg-clip-text text-transparent'>Currency Exchange</span></h1>
           <p className='text-xl text-gray-500 leading-8 md:w-full sm:w-full w-full'>Get accurate and up-to-date exchange rates, convert currencies instantly, <br className='lg:block hidden'/> and track historical trends — all in one simple, powerful experience <br className='lg:block hidden'/> powered by <b>Xchangeo.</b></p>
-          <Button onClick={navigateToConverter} className='lg:text-base flex items-center justify-center text-base bg-linear-to-r from-primary-color to-secondary-color p-6 text-white font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out mt-4'>
-            Try Converter <RiArrowRightLongFill className='text-4xl' />
+          <Button onClick={navigateToConverter} variant='contained' className='lg:text-base flex items-center gap-4 bg-linear-to-r from-primary-color to-secondary-color p-6 font-semibold rounded-full hover:scale-105 hover:shadow-lg transition-all duration-300 ease-in-out mt-4 text-base!' sx={{textTransform: 'capitalize'}}>
+            Try Converter <RiArrowRightLongFill className='text-xl ' />
           </Button>
         </div>
         <img src={heroImage} alt="hero-img" className='lg:w-150 md:w-130 sm:w-100 w-full lg:pe-22 lg:pt-0 md:pt-10 sm:pt-10 pt-10' />
