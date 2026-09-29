@@ -3,7 +3,7 @@ import logo from '../assets/images/logo.svg'
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-100 border-t-2 border-gray-300 px-8 py-4 flex justify-between items-center'>
+    <footer className='bg-gray-100 border-t-2 border-gray-300 px-8 py-7 mt-4 flex justify-between items-center'>
         <div className=' flex justify-start items-center gap-4'>
             <img src={logo} alt="logo" />
             <div>
