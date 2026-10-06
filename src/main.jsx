@@ -7,14 +7,14 @@ import { BrowserRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
   // For Development
-  // <StrictMode>
-  //   <BrowserRouter>
-  //     <App />
-  //   </BrowserRouter>
-  // </StrictMode>,
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
 
   // For Production
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  // <BrowserRouter>
+  //   <App />
+  // </BrowserRouter>
 )

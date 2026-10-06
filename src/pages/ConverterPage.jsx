@@ -60,9 +60,12 @@ const ConverterPage = () => {
     if (!fromCurrency || !toCurrency || !amount) return
     setLoading(true);
     try {
+      // Get the current rate
       const response = await axios.get(`https://api.frankfurter.dev/v2/rate/${fromCurrency}/${toCurrency}`)
       const data = response.data
       const numericAmount = Number(amount)
+
+      // Get the history of the rate for the last 7 days
       const fromDate = new Date()
       fromDate.setDate(fromDate.getDate() - 7)
       const historyStart = fromDate.toISOString().slice(0, 10)
@@ -112,9 +115,9 @@ const ConverterPage = () => {
   }
 
   return (
-    <section className='flex xl:flex-row lg:flex-col md:flex-col sm:flex-col flex-col justify-center items-center gap-5 px-6 pt-20 pb-10'>
+    <section className='flex xl:flex-row lg:flex-col md:flex-col sm:flex-col flex-col justify-center xl:items-stretch items-center gap-5 px-6 pt-20 pb-10'>
       {/* Converter */}
-      <div className='bg-white xl:w-[60%] lg:w-full md:w-[90%] sm:w-full w-full rounded-xl p-5 shadow-md flex flex-col justify-center gap-4'>
+      <div className='bg-white xl:w-[60%] lg:w-full md:w-full sm:w-full w-full rounded-xl p-5 shadow-md flex flex-col justify-center gap-4'>
         {/* Title */}
         <div className='flex items-center gap-4'>
           <img src={titleLogoImg} alt="title-logo" className='w-12' />
@@ -216,38 +219,38 @@ const ConverterPage = () => {
 
         {/* Converted Result */}
         {result && !loading && (
-          <div className='h-55 flex flex-col justify-center items-start gap-4'>
-            <div className='flex items-center justify-between rounded-2xl border border-gray-100 bg-gray-50 px-5 py-4  w-full'>
-              <div>
-                <p className='text-lg font-semibold text-slate-900'>
+          <div className='min-h-55 flex flex-col justify-center items-start gap-4'>
+            <div className='flex items-start justify-between gap-3 rounded-2xl border border-gray-100 bg-gray-50 px-5 py-4 w-full min-w-0'>
+              <div className='min-w-0'>
+                <p className='text-lg font-semibold text-slate-900 wrap-break-word'>
                   1 {result.base} = {formatAmount(result.rate)} {result.quote}
                 </p>
-                <p className='text-sm text-gray-400'>
+                <p className='text-sm text-gray-400 wrap-break-word'>
                   Last updated: {formatUpdated(result.updatedAt)}
                 </p>
               </div>
               {result.changePercent !== null && (
-                <p className={`font-medium ${result.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                <p className={`shrink-0 font-medium ${result.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
                   {result.changePercent >= 0 ? '↑' : '↓'} {Math.abs(result.changePercent).toFixed(2)}% (24h)
                 </p>
               )}
             </div>
 
-            <div className='flex items-center justify-between rounded-2xl border border-gray-100 bg-gray-50 px-5 py-5 w-full'>
-              <div>
+            <div className='flex items-center justify-between gap-3 rounded-2xl border border-gray-100 bg-gray-50 px-5 py-5 w-full min-w-0'>
+              <div className='min-w-0 flex-1'>
                 <p className='text-xs font-medium tracking-wide text-gray-400'>
                   CONVERTED AMOUNT
                 </p>
-                <p className='text-3xl font-bold text-slate-900'>
+                <p className={`font-bold text-slate-900 wrap-break-word ${formatAmount(result.converted).length > 18 ? 'text-xl' : 'text-3xl'}`}>
                   {formatAmount(result.converted)} {result.quote}
                 </p>
-                <p className='text-sm text-gray-400'>
+                <p className='text-sm text-gray-400 wrap-break-word'>
                   {formatAmount(result.amount)} {result.base} = {formatAmount(result.converted)} {result.quote}
                 </p>
               </div>
               <button
                 type='button'
-                className='rounded-xl border border-gray-200 bg-white p-3 text-gray-500 hover:text-primary-color'
+                className='shrink-0 rounded-xl border border-gray-200 bg-white p-3 text-gray-500 hover:text-primary-color'
                 onClick={copyConvertedAmount}
                 aria-label={copied ? 'Copied' : 'Copy converted amount'}
               >
@@ -257,6 +260,7 @@ const ConverterPage = () => {
           </div>
         )}
 
+        {/* Loading State*/}
         {
           loading && (
             <div className='flex flex-col items-center gap-2 bg-gray-50 py-15 rounded-xl border border-gray-100 h-55'>
@@ -273,7 +277,7 @@ const ConverterPage = () => {
       </div>
 
       {/* Data Chart */}
-      <DataChart />
+      <DataChart fromCurrency={result && fromCurrency ? fromCurrency : null} toCurrency={result && toCurrency ? toCurrency : null} loading={loading} />
     </section>
   )
 }
