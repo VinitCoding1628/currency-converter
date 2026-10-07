@@ -8,8 +8,7 @@ import { FiCheck, FiCopy } from 'react-icons/fi'
 import emptyResultImg from '../assets/images/bar_chart_icon.svg'
 import DataChart from '../components/DataChart'
 import { gooeyToast } from 'goey-toast'
-import { Bouncy } from 'ldrs/react'
-import 'ldrs/react/Bouncy.css'
+import LoadingState from '../components/LoadingState'
 
 const formatAmount = (value) =>
   new Intl.NumberFormat('en-US', {
@@ -263,15 +262,11 @@ const ConverterPage = () => {
         {/* Loading State*/}
         {
           loading && (
-            <div className='flex flex-col items-center gap-2 bg-gray-50 py-15 rounded-xl border border-gray-100 h-55'>
-              <Bouncy
-                size="45"
-                speed="1.75"
-                color='#5F8DF7'
-              />
-              <p className='text-gray-400 text-sm text-center px-14'>Please wait while we are converting the currency...</p>
-              <p className='text-gray-400 text-sm text-center px-14'>This may take a few seconds.</p>
-            </div>
+            <LoadingState
+              innerClassName='h-55'
+              title='Please wait while we are converting the currency...'
+              subtitle='This may take a few seconds.'
+            />
           )
         }
       </div>

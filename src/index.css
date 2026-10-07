@@ -29,3 +29,7 @@ body {
   background-repeat: no-repeat;
   width: 100%;
 }
+
+.recharts-brush-texts text {
+  font-size: 13px;
+}
