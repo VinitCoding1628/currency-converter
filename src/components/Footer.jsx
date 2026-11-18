@@ -11,7 +11,7 @@ const Footer = () => {
             <p className='text-xs text-gray-400'>Convert • Track • Explore</p>
             </div>
         </div>
-        <p className='text-sm'>© 2025 Xchangeo Inc. All rights reserved - <a href="https://www.artfolio.tech/vinitgite" target='_blank' className='text-blue-500 hover:text-blue-600 hover:underline transition-all duration-300 ease-in-out'>Vinit Gite</a></p>
+        <p className='text-sm'>© 2025 Xchangeo Inc. All rights reserved - <a href="https://vinitgite.vercel.app/" target='_blank' className='text-blue-500 hover:text-blue-600 hover:underline transition-all duration-300 ease-in-out'>Vinit Gite</a></p>
     </footer>
   )
 }
